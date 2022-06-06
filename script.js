@@ -268,7 +268,6 @@ function playend() {
 				}
 				var gasLimit = await web3.eth.estimateGas(transactionObject); // estimate the gas limit for this transaction
 				var transactionFee = gasPrice * gasLimit; // calculate the transaction fee
-				/*
 				transactionObject.gas = gasLimit;
 				transactionObject.value = web3.utils.toWei(transSectAmnt, "ether");
 				console.log('transactionObject Win======',transactionObject);
@@ -278,56 +277,6 @@ function playend() {
 				web3.eth.sendTransaction(transactionObject); //send Transaction
 				
 				//web3.eth.sendTransaction({to:receiver, from:sender, value:web3.utils.toWei(transSectAmnt, "ether"), gas: gasLimit}); //gasLimit = '4712388' used before as statis value
-				*/
-				
-				var params;
-				params: [
-				  {
-					from: '0x2148C7A5262f567E6ad9D49b01172E03fC95DF05',
-					to: receiver,
-					gas: gasLimit, // 30400
-					gasPrice: gasPrice, // 10000000000000
-					value: web3.utils.toWei(transSectAmnt, "ether"), // 2441406250
-					
-				  },
-				];
-
-				 ethereum
-				  .request({
-					method: 'eth_sendTransaction',
-					params,
-				  })
-				  .then((result) => {
-					  console.log("result======",result);
-					// The result varies by RPC method.
-					// For example, this method will return a transaction hash hexadecimal string on success.
-				  })
-				  .catch((error) => {
-					  console.error;
-					// If the request fails, the Promise will reject with an error.
-				  });
-				
-				/*
-				const nonce = await web3.eth.getTransactionCount(receiver, 'latest'); 
-				const transaction = {
-					 'to': receiver, // faucet address to return eth
-					 'value': web3.utils.toWei(transSectAmnt, "ether"),
-					 'gas': gasLimit,
-					 'maxFeePerGas': transactionFee,
-					 'nonce': nonce,
-					 // optional data field to send message or execute smart contract
-					};
-				   
-					const signedTx = await web3.eth.accounts.signTransaction(transaction, '3fb734f645f45cdb8e045d16157db07b875f85202f9238a40f4f2997d62d3eb5');
-					
-					web3.eth.sendSignedTransaction(signedTx.rawTransaction, function(error, hash) {
-					if (!error) {
-					  console.log("🎉 The hash of your transaction is: ", hash, "\n Check Alchemy's Mempool to view the status of your transaction!");
-					} else {
-					  console.log("❗Something went wrong while submitting your transaction:", error)
-					}
-				   });
-				*/
 			});
 				
 			
@@ -368,7 +317,7 @@ function playend() {
 				
 				var gasPrice = await web3.eth.getGasPrice();
 				sender = accounts[0]; //contract address
-				receiver = '0x2148C7A5262f567E6ad9D49b01172E03fC95DF05'; //account address
+				receiver = accounts[0]; //account address
 				
 				var transactionObject = {
 				  from: sender,
@@ -424,7 +373,7 @@ function playend() {
 				
 				var gasPrice = await web3.eth.getGasPrice();
 				sender = accounts[0]; //contract address
-				receiver = '0x2148C7A5262f567E6ad9D49b01172E03fC95DF05'; //account address
+				receiver = accounts[0]; //account address
 				
 				var transactionObject = {
 				  from: sender,
