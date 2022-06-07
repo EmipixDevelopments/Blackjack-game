@@ -12,10 +12,7 @@
 	//injdected web3
 	$(document).ready(function(){
 		web3 = new Web3(window.ethereum);
-		web3.eth.requestAccounts().then(async function(accounts){
-			console.log('accounts==========>>>>>>>>>',accounts);
-		});
-		/*
+	
 		document.addEventListener('contextmenu', function(e) {
 		  e.preventDefault();
 		});
@@ -36,7 +33,7 @@
 			 return false;
 		  }
 		}
-		*/
+		
 	});
 	
 	
